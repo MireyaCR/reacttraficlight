@@ -10,3 +10,10 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+.luz{
+    width:100px;
+    height: 100px;
+    background: red;
+    border-radius: 50%;
+}
