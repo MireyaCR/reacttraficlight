@@ -11,26 +11,27 @@ const TrafficLight = () => {
 		<div className="semaforo">
 			{listColor.map((actualColor)=>{
 				return (
-					<div className={"luz"+((color==actualColor)?" on":"")} 
+					<div key={actualColor} className={"luz"+((color==actualColor)?" on":"")} 
 						onClick={()=>setColor(actualColor)}
-						style={{"background-color":actualColor}}/>
+						style={{"backgroundColor":actualColor}}/>
 				);
 			})}
-			<button onClick={()=>{
+			<button className="btn btn-primary" onClick={()=>{
 				const index=listColor.indexOf(color)
-				const next=(index===listColor.length-1)?0:index+1
+				const next=(index==-1 || index===listColor.length-1)?0:index+1
 				setColor(listColor[next])
 			}}>change</button>
-			<button onClick={()=>{
+			<button className="btn btn-primary" onClick={()=>{
 				if(!listColor.includes("purple")){
 					listColor.push("purple")
 					setColor("purple")
 				}
 			}}
-			disabled={listColor.includes("purple")}>add</button>
-			<button onClick={()=>{
+			disabled={listColor.includes("purple")}
+			>add</button>
+			<button className="btn btn-primary" onClick={()=>{
 				listColor = ["red", "orange", "green"]
-				setColor("red")
+				setColor("")
 			}}>reset</button>
 		</div>
 	);
